@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Bot - AI Assistant</title>
+<style>
+  :root{
+    --bg:#ffffff; --bg-soft:#f6f8fb; --text:#1a1f2b; --muted:#5b6474;
+    --accent:#2563eb; --accent-dark:#1d4ed8; --chaos:#fff1f1; --chaos-text:#b42318;
+    --sol:#eefcf3; --sol-text:#107a44; --border:#e5e9f0; --radius:16px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif; background:var(--bg); color:var(--text); line-height:1.6;}
+  section{max-width:1000px; margin:0 auto; padding:60px 20px;}
+  h1,h2,h3{font-weight:700;}
+  .hero{text-align:center; background:linear-gradient(180deg,var(--bg-soft),var(--bg)); padding:70px 20px;}
+  .status-badge{display:inline-block; background:#e8f9ee; color:#108a4a; padding:6px 16px; border-radius:999px; font-size:14px; font-weight:600; margin-bottom:20px;}
+  .avatar{font-size:64px; margin-bottom:10px;}
+  .hero h1{font-size:2.6rem; color:var(--text); margin-bottom:12px;}
+  .tagline{font-size:1.1rem; color:var(--muted); max-width:600px; margin:0 auto;}
+  h2{text-align:center; font-size:1.8rem; margin-bottom:36px;}
+  .comparison{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .chaos,.solution{padding:28px; border-radius:var(--radius); border:1px solid var(--border);}
+  .chaos{background:var(--chaos);}
+  .solution{background:var(--sol);}
+  .chaos h3{color:var(--chaos-text); margin-bottom:16px;}
+  .solution h3{color:var(--sol-text); margin-bottom:16px;}
+  .chaos ul,.solution ul{padding-left:20px;}
+  .chaos li,.solution li{margin-bottom:10px; font-size:0.96rem;}
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .card{background:var(--bg-soft); border:1px solid var(--border); border-radius:var(--radius); padding:26px; text-align:center;}
+  .card .icon{font-size:36px; margin-bottom:12px;}
+  .card h3{font-size:1.1rem; margin-bottom:10px;}
+  .card p{font-size:0.92rem; color:var(--muted);}
+  .simulation{text-align:center;}
+  .chat-box{background:var(--bg-soft); border:1px solid var(--border); border-radius:var(--radius); min-height:160px; padding:20px; margin-bottom:24px; text-align:left; display:flex; flex-direction:column; gap:10px;}
+  .chat-placeholder{color:var(--muted); text-align:center; margin:auto;}
+  .msg{padding:10px 16px; border-radius:12px; max-width:80%; font-size:0.95rem;}
+  .user-msg{background:var(--accent); color:#fff; align-self:flex-end; border-bottom-right-radius:2px;}
+  .bot-msg{background:#fff; border:1px solid var(--border); align-self:flex-start; border-bottom-left-radius:2px;}
+  .typing{font-style:italic; color:var(--muted);}
+  .scenario-buttons{display:flex; flex-wrap:wrap; gap:12px; justify-content:center;}
+  .scenario-buttons button{background:#fff; border:1px solid var(--accent); color:var(--accent); padding:10px 18px; border-radius:999px; cursor:pointer; font-size:0.9rem; transition:0.2s;}
+  .scenario-buttons button:hover{background:var(--accent); color:#fff;}
+  footer{text-align:center; background:var(--bg-soft); padding:60px 20px;}
+  .cta-button{display:inline-block; background:var(--accent); color:#fff; text-decoration:none; padding:14px 34px; border-radius:999px; font-weight:600; font-size:1.05rem; margin:20px 0; transition:0.2s;}
+  .cta-button:hover{background:var(--accent-dark);}
+  .footer-text{color:var(--muted); font-size:0.85rem; margin-top:10px;}
+  @media(max-width:700px){
+    .comparison,.cards{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="status-badge">🟢 Status: Active & Ready 24/7</div>
+  <div class="avatar">🤖</div>
+  <h1>Super Bot</h1>
+  <p class="tagline">Merangkum dan mencatat notulensi rapat Anda secara otomatis, serta mengingatkan tugas harian supaya tidak ada lagi yang terlewat.</p>
+</section>
+
+<section class="problem-solution">
+  <h2>Dari Kekacauan ke Solusi</h2>
+  <div class="comparison">
+    <div class="chaos">
+      <h3>😵 The Chaos</h3>
+      <ul>
+        <li>Sering lupa mengerjakan tugas</li>
+        <li>Tidak sempat mencatat saat meeting, informasi penting hilang</li>
+        <li>File pekerjaan berceceran di mana-mana</li>
+        <li>Progres tugas sulit dilacak, deadline terlewat tanpa sadar</li>
+        <li>Info & keputusan rapat tersebar, susah dicari lagi saat dibutuhkan</li>
+      </ul>
+    </div>
+    <div class="solution">
+      <h3>✅ The Solution</h3>
+      <ul>
+        <li>Integrasi Google Meet untuk merekam diskusi secara otomatis</li>
+        <li>Reminder tugas harian dikirim langsung ke email</li>
+        <li>File dikelompokkan rapi, selalu dengan persetujuan Anda</li>
+        <li>Action items otomatis lengkap dengan PIC & deadline</li>
+        <li>Fitur pencarian cepat ke seluruh riwayat rapat & file</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="capabilities">
+  <h2>Kemampuan Utama</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🎙️</div>
+      <h3>Rekam & Notulensi Rapat</h3>
+      <p>Terhubung ke Google Meet untuk merekam diskusi, membuat notulensi otomatis lengkap action items (PIC & deadline), dan mudah dicari kembali.</p>
+    </div>
+    <div class="card">
+      <div class="icon">⏰</div>
+      <h3>Reminder Tugas Harian</h3>
+      <p>Pengingat tugas harian dikirim langsung ke email Anda, supaya tidak ada lagi deadline yang terlewat begitu saja.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🗂️</div>
+      <h3>File Organizer Otomatis</h3>
+      <p>Mengelompokkan file-file pekerjaan Anda secara otomatis, selalu meminta persetujuan Anda sebelum merapikan.</p>
+    </div>
+  </div>
+</section>
+
+<section class="simulation">
+  <h2>Coba Simulasinya</h2>
+  <div class="chat-box" id="chatBox">
+    <div class="chat-placeholder" id="placeholder">Pilih skenario di bawah untuk melihat Super Bot beraksi 👇</div>
+  </div>
+  <div class="scenario-buttons">
+    <button onclick="runScenario('rangkum')">📝 Rangkum Rapat Saya</button>
+    <button onclick="runScenario('ingatkan')">⏰ Ingatkan Tugas Saya</button>
+    <button onclick="runScenario('rapikan')">🗂️ Rapikan File Saya</button>
+  </div>
+</section>
+
+<footer>
+  <h2>Siap bekerja lebih rapi bersama Super Bot?</h2>
+  <a href="https://wa.me/628123456789" target="_blank" class="cta-button">💬 Hubungi via WhatsApp</a>
+  <p class="footer-text">Built with AI · AI Builder Bootcamp Showcase</p>
+</footer>
+
+<script>
+const scenarios = {
+  rangkum: {
+    user: "Super Bot, tolong rangkum meeting tadi pagi.",
+    reply: "Siap! Meeting 'Review Project Q4' sudah dirangkum ✅ 3 action items ditemukan lengkap PIC & deadline. Mau saya kirim ke email Anda?"
+  },
+  ingatkan: {
+    user: "Ada tugas apa saja hari ini?",
+    reply: "Hari ini Anda punya 3 tugas: 1) Kirim laporan ke Pak Budi (15.00), 2) Review desain landing page, 3) Follow up klien ABC. Reminder sudah dikirim ke email Anda 📧"
+  },
+  rapikan: {
+    user: "Tolong rapikan file project minggu ini.",
+    reply: "Saya temukan 12 file yang bisa dikelompokkan jadi folder 'Project Minggu Ini'. Boleh saya lanjutkan merapikannya? 🗂️ (Menunggu persetujuan Anda)"
+  }
+};
+
+function runScenario(key){
+  const chatBox = document.getElementById('chatBox');
+  const data = scenarios[key];
+  chatBox.innerHTML = '';
+
+  const userMsg = document.createElement('div');
+  userMsg.className = 'msg user-msg';
+  userMsg.textContent = data.user;
+  chatBox.appendChild(userMsg);
+
+  const typing = document.createElement('div');
+  typing.className = 'msg bot-msg typing';
+  typing.textContent = 'Super Bot sedang mengetik...';
+  chatBox.appendChild(typing);
+
+  setTimeout(() => {
+    typing.remove();
+    const botMsg = document.createElement('div');
+    botMsg.className = 'msg bot-msg';
+    botMsg.textContent = data.reply;
+    chatBox.appendChild(botMsg);
+  }, 1200);
+}
+</script>
+
+</body>
+</html>
